@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Biblioteca Montequinto</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            margin-left: 10px;
+        }
+        
+        form {
+            display: none;
+        }
+        
+        #formularios {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Biblioteca</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" id="mnuAltaUsuario">Alta de Usuarios</a>
+                </li>
+                <li>
+                    <a href="#" id="mnuAltaPrestamo">Alta de préstamo</a>
+                </li>
+                <li>
+                    <a href="#" id="mnuAltaArticulo">Alta de articulos</a>
+                </li>
+                <li>
+                    <a href="#" id="mnuListados">Tipos de Listados</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid" id="formularios">
+        <form class="form-horizontal" name="frmListados" id="frmListados">
+            <fieldset>
+
+                <!-- Tipos de Listados -->
+                <legend>Tipos de Listados</legend>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btListaUsuarios">Listar Usuarios</label>
+                    <div class="col-md-4">
+                        <input type="button" id="btListaUsuarios" name="btListaUsuarios" value="Listar" class="btn btn-primary">
+                    </div>
+                    <div id="listadoUsuarios"></div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btListarArticulos">Listar Articulos</label>
+                    <div class="col-md-4">
+                        <input type="button" id="btListarArticulos" name="btListarArticulos" value="Listar" class="btn btn-primary">
+                    </div>
+                    <div id="listadoArticulos"></div>
+                </div>
+
+                <!-- Multiple Radios (inline) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="rdbtListarArticulos">Selecciona una opcion</label>
+                    <div class="col-md-4">
+                        <label class="radio-inline" for="rdbtListarArticulos-0">
+                            <input type="radio" name="rdbtListarArticulos" id="rdbtListarArticulos-0" value="Libros" checked="checked">
+                            Libros
+                        </label>
+                        <label class="radio-inline" for="rdbtListarArticulos-1">
+                            <input type="radio" name="rdbtListarArticulos" id="rdbtListarArticulos-1" value="DVDs">
+                            DVD`s
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btListarPorTipo">Listar Articulos según la opcion elegida</label>
+                    <div class="col-md-4">
+                        <input type="button" id="btListarPorTipo" name="btListarPorTipo" value="Listar" class="btn btn-primary">
+                    </div>
+                    <div id="mostrarPorTipo"></div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dFechaInicio">Fecha Incio</label>
+                    <div class="col-md-4">
+                        <input id="dFechaInicio" name="dFechaInicio" type="date" placeholder="dd/mm/aa" class="form-control input-md" >
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dFechaFin">Fecha Fin</label>
+                    <div class="col-md-4">
+                        <input id="dFechaFin" name="dFechaFin" type="date" placeholder="dd/mm/aa" class="form-control input-md">
+
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btListarPrestamos">Listar segun las fechas</label>
+                    <div class="col-md-4">
+                        <input type="button" id="btListarPrestamos" name="btListarPrestamos" class="btn btn-primary" value="Listar"/>
+                    </div>
+                    <div id="listadoPrestamos"></div>
+                </div>
+                
+
+            </fieldset>
+        </form>
+    </div>
+    <div class="container-fluid" id="formularios">
+        <form class="form-horizontal" name="frmAltaUsuario" id="frmAltaUsuario">
+            <fieldset>
+
+                <!-- Alta Usuarios -->
+                <legend>Alta Usuarios</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="sidUsuario">ID del usuario:</label>
+                    <div class="col-md-4">
+                        <input id="sidUsuario" name="sidUsuario" type="text" placeholder="id" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="snombreUsuario">Nombre:</label>
+                    <div class="col-md-4">
+                        <input id="snombreUsuario" name="snombreUsuario" type="text" placeholder="nombre" class="form-control input-md">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="sApellido">Apellido: </label>
+                    <div class="col-md-4">
+                        <input id="sApellido" name="sApellido" type="text" placeholder="apellido" class="form-control input-md">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="iTelefono">Telefono: </label>
+                    <div class="col-md-4">
+                        <input id="iTelefono" name="iTelefono" type="text" placeholder="telefono" class="form-control input-md">
+
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btUsuario"></label>
+                    <div class="col-md-4">
+                        <input type="button" id="btUsuario" name="btUsuario" value="Añadir" class="btn btn-primary">
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container-fluid" id="formularios">
+        <form class="form-horizontal" name="frmAltaPrestamo" id="frmAltaPrestamo">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Alta de prestamo</legend>
+                <!--Prestamo-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="idPrestamo">ID Prestamo</label>
+                    <div class="col-md-4">
+                        <input id="idPrestamo" name="idPrestamo" type="text" placeholder="id prestamo" class="form-control input-md">
+
+                    </div>
+                </div>
+                <!--Usuario-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="idUsuario">ID Usuario</label>
+                    <div class="col-md-4">
+                        <input id="idUsuario" name="idUsuario" type="text" placeholder="id usuario" class="form-control input-md">
+
+                    </div>
+                </div>
+                <!-- Select -->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="lstLibros1">Libro 1</label>
+                    <div class="col-xs-4">
+                        <select id="lstLibros1" name="lstLibros1" class="form-control input-md">
+                            
+                        </select>
+                    </div>
+                </div>
+                <!-- Select -->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="lstLibros2">Libro 2</label>
+                    <div class="col-xs-4">
+                        <select id="lstLibros2" name="lstLibros2" class="form-control input-md">
+                            
+                        </select>
+                    </div>
+                </div>
+                <!-- Select -->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="lstDVD1">DVD 1</label>
+                    <div class="col-xs-4">
+                        <select id="lstDVD1" name="lstDVD1" class="form-control input-md">
+                            
+                        </select>
+                    </div>
+                </div>
+                <!-- Select -->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="lstDVD2">DVD 2</label>
+                    <div class="col-xs-4">
+                        <select id="lstDVD2" name="lstDVD2" class="form-control input-md">
+                            
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Fechas-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="iFechaInicio">Fecha Inicio</label>
+                    <div class="col-md-4">
+                        <input id="iFechaInicio" name="iFechaInicio" type="text" placeholder="" class="form-control input-md" readonly>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="iFechaFin">Fecha Fin</label>
+                    <div class="col-md-4">
+                        <input id="iFechaFin" name="iFechaFin" type="text" placeholder="dd/mm/aaaa" class="form-control input-md">
+
+                    </div>
+                </div>
+
+
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <div class="col-md-8">
+                        <input type="button" id="btAceptarPrestamo" name="btAceptarPrestamo" value="Aceptar" class="btn btn-success">
+                        <input type="button" id="btDevolverPrestamo" name="btDevolverPrestamo" class="btn btn-danger" value="Devolver">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="container-fluid" id="formularios">
+        <form class="form-horizontal" name="frmAltaArticulo" id="frmAltaArticulo">
+                <fieldset>
+                
+                <!-- Alta de articulos -->
+                <legend>Alta de artículos</legend>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="ititulo">Título</label>  
+                  <div class="col-md-4">
+                  <input id="ititulo" name="ititulo" type="text" placeholder="titulo" class="form-control input-md">
+                    
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="idArticulo">ID del Artículo</label>  
+                  <div class="col-md-4">
+                  <input id="idArticulo" name="idArticulo" type="text" placeholder="id articulo" class="form-control input-md">
+                    
+                  </div>
+                </div>
+                
+                <!-- Multiple Radios -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="rbTipoArticulo">Tipo de Artículo</label>
+                  <div class="col-md-4">
+                  <div class="radio">
+                    <label for="rbTipoArticulo-0">
+                      <input type="radio" name="rbTipoArticulo" id="rbTipoArticulo-0" value="1" checked="checked">
+                      Libro
+                    </label>
+                    </div>
+                  <div class="radio">
+                    <label for="rbTipoArticulo-1">
+                      <input type="radio" name="rbTipoArticulo" id="rbTipoArticulo-1" value="2">
+                      DVD
+                    </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="iPaginas">Nº páginas</label>  
+                  <div class="col-md-4">
+                  <input id="iPaginas" name="iPaginas" type="text" placeholder="paginas" class="form-control input-md">
+                    
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="iAutor">Autor</label>  
+                  <div class="col-md-4">
+                  <input id="iAutor" name="iAutor" type="text" placeholder="autor" class="form-control input-md">
+                    
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="iFechaEstreno">Fecha Estreno</label>  
+                  <div class="col-md-4">
+                  <input id="iFechaEstreno" name="iFechaEstreno" type="text" placeholder="dd/mm/aaaa" class="form-control input-md">
+                    
+                  </div>
+                </div>
+                
+                <!-- Multiple Radios -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="rbSubtitulada">¿Subtitulada?</label>
+                  <div class="col-md-4">
+                  <div class="radio">
+                    <label for="rbSubtitulada-0">
+                      <input type="radio" name="rbSubtitulada" id="rbSubtitulada-0" value="1" checked="checked">
+                      Si
+                    </label>
+                    </div>
+                  <div class="radio">
+                    <label for="rbSubtitulada-1">
+                      <input type="radio" name="rbSubtitulada" id="rbSubtitulada-1" value="2">
+                      No
+                    </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="btArticulos"></label>
+                  <div class="col-md-4">
+                    <input type="button" id="btArticulos" name="btArticulos" value="Añadir" class="btn btn-primary">
+                  </div>
+                </div>
+                
+                </fieldset>
+                </form>
+                
+            
+        </div>
+    <script type="text/javascript" src="js/objetos.js"></script>
+    <script type="text/javascript" src="js/codigo.js"></script>
+</body>
+
+</html>
+
+
+    
